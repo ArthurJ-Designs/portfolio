@@ -33,6 +33,36 @@ body {
 	line-height: 1;
 }
 
+#back-to-top {
+	position: fixed;
+	right: 1.25rem;
+	bottom: 1.25rem;
+	z-index: 1200;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.16);
+	color: #ffffff;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	backdrop-filter: blur(6px);
+	line-height: 1;
+}
+
+#back-to-top:hover {
+	background: rgba(255, 255, 255, 0.24);
+}
+
+#back-to-top span {
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
 .section-hidden {
 	display: none !important;
 }
@@ -3101,8 +3131,13 @@ body {
 /* Header */
 
 	#header {
+		position: relative;
+		z-index: 1;
 		padding: 5em 5em 1em 5em ;
 		text-align: center;
+		transition: opacity 0.25s ease, transform 0.25s ease;
+		border-top-left-radius: 0.25em;
+		border-top-right-radius: 0.25em;
 	}
 
 		#header h1 {
@@ -3240,19 +3275,24 @@ body {
 /* Nav */
 
 	#nav {
-		-moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-		-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-		-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-		transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
+		-moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease, opacity 0.25s ease, transform 0.25s ease;
+		-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease, opacity 0.25s ease, transform 0.25s ease;
+		-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease, opacity 0.25s ease, transform 0.25s ease;
+		transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease, opacity 0.25s ease, transform 0.25s ease;
 		background-color: #ffffff;
 		color: #636363;
-		position: absolute;
+		position: sticky;
+		top: 0;
+		z-index: 10001;
 		width: 64em;
 		max-width: calc(100% - 4em);
+		margin: 0 auto 1em auto;
 		padding: 1em;
 		background-color: #f7f7f7;
 		border-top-left-radius: 0.25em;
 		border-top-right-radius: 0.25em;
+		border-bottom-left-radius: 0.25em;
+		border-bottom-right-radius: 0.25em;
 		cursor: default;
 		text-align: center;
 	}
@@ -3287,7 +3327,7 @@ body {
 		}
 
 		#nav + #main {
-			padding-top: 4.25em;
+			padding-top: 0;
 		}
 
 		#nav ul {
@@ -3305,6 +3345,10 @@ body {
 				margin: 0 0.35em;
 				padding: 0;
 				vertical-align: middle;
+			}
+
+			#nav ul li.nav-right {
+				margin-left: auto;
 			}
 
 				#nav ul li a {
@@ -3331,7 +3375,7 @@ body {
 					}
 
 		#nav.alt {
-			position: fixed;
+			position: sticky;
 			top: 0;
 			padding: 0.5em 1em;
 			background-color: rgba(247, 247, 247, 0.95);
@@ -3366,6 +3410,7 @@ body {
 		background-color: #ffffff;
 		color: #636363;
 		border-radius: 0.25em;
+		overflow: hidden;
 	}
 
 		#main input, #main select, #main textarea {
@@ -3846,7 +3891,12 @@ body {
     transform: scale(1.03);
     transition: 0.2s ease;
 }
-/* lightbox gpt trick */
+/* lightbox gpt trick */body.lightbox-open #header,
+body.lightbox-open #nav {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
 #lightbox-overlay {
     position: fixed;
     top: 0;
