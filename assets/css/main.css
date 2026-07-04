@@ -2541,6 +2541,32 @@ body {
 			clear: both;
 		}
 
+#footer dl.alt dt,
+#footer dl.alt dd {
+	float: none;
+	width: auto;
+	margin: 0;
+	display: inline;
+}
+
+#footer dl.alt dt::after {
+	content: ': ';
+}
+
+#footer dl.alt dd::after {
+	content: '';
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+#footer dl.alt {
+	text-align: center;
+}
+
+#footer dl.alt:after {
+	display: none;
+}
+
 	ul.alt li {
 		border-top-color: rgba(255, 255, 255, 0.35);
 	}
@@ -3764,14 +3790,18 @@ body {
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
 		padding: 5em 5em 3em 5em ;
 		width: calc(100% + 2em);
 		margin: 0 0 3em -2em;
 	}
 
 		#footer > * {
-			width: calc(50% - 2em);
-			margin-left: 2em;
+			width: 100%;
+			margin-left: 0;
+			text-align: center;
 		}
 
 		#footer .copyright {
@@ -3890,12 +3920,6 @@ body {
 .image-grid img:hover {
     transform: scale(1.03);
     transition: 0.2s ease;
-}
-/* lightbox gpt trick */body.lightbox-open #header,
-body.lightbox-open #nav {
-    opacity: 0;
-    transform: translateY(-100%);
-    pointer-events: none;
 }
 #lightbox-overlay {
     position: fixed;
