@@ -3171,7 +3171,8 @@ body {
 		}
 
 		#header p {
-			font-size: 1.25em;
+			font-size: 1.45em;
+			line-height: 1.5;
 			letter-spacing: -0.025em;
 		}
 
@@ -3252,6 +3253,12 @@ body {
 					#header p br {
 						display: none;
 					}
+
+				#header.alt .logo img {
+					width: clamp(110px, 34vw, 170px);
+					height: auto;
+					max-width: 92%;
+				}
 
 				#header.alt {
 					padding: 4em 2em 1em 2em ;
@@ -3421,8 +3428,27 @@ body {
 		@media screen and (max-width: 736px) {
 
 			#nav {
-				display: none;
+				display: block;
+				width: calc(100% - 1.5em);
+				max-width: none;
+				padding: 0.75em;
 			}
+
+				#nav ul {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
+					gap: 0.35em;
+				}
+
+				#nav ul li {
+					margin: 0;
+				}
+
+				#nav ul li a {
+					padding: 0 0.9em;
+					font-size: 0.85em;
+				}
 
 				#nav + #main {
 					padding-top: 0;
