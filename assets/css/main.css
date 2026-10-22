@@ -3963,8 +3963,27 @@ body {
     z-index: 2147483647;
 }
 
+#lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(90vw, 1100px);
+    gap: 0.75rem;
+}
+
 #lightbox-overlay img {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 82vh;
     border-radius: 8px;
+    display: block;
+}
+
+#lightbox-caption {
+    color: #f2f2f2;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 60ch;
+    padding: 0 0.5rem;
 }
